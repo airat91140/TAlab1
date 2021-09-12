@@ -1,0 +1,457 @@
+%start mainMap::Start
+%class CheckStr
+%header checkstr.h
+
+%map mainMap
+%%
+
+//table of symbols:
+/*
+    letter_e                                'e'
+    letter_d                                'd'
+    digit_2                                 '2'
+    letter_k                                'k'
+    colon                                   ':'
+    slash                                   '/'
+    letter_f                                'f'
+    letter_i                                'i'
+    letter_l                                'l'
+    digit(c: char)                          '1', '3', '4', '5' .... '9', '0'
+    letter_a_c(c: char)                     'a', 'b', 'c'
+    letter_g_z(c: char)                     'g', 'h', 'j', 'm' .... 'z'
+    special                                 '+', '-', '_', '.'
+    EOS
+    pipe                                    '|'
+    unknown
+*/
+Start
+{
+    letter_e                                          CheckProtocolD                  {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckProtocolD
+{
+    letter_e                                          Error                           {}
+    letter_d                                          CheckProtocol2                  {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckProtocol2
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           CheckProtocolK                  {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckProtocolK
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          CheckProtocolColon              {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckProtocolColon
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             CheckProtocolSlash1             {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckProtocolSlash1
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             CheckProtocolSlash2             {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckProtocolSlash2
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             CheckPipe0                      {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckPipe0
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              CheckFileTypeF                  {}
+}
+
+CheckFileTypeF
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          CheckFileTypeI                  {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckFileTypeI
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          CheckFileTypeL                  {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckFileTypeL
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          CheckFileTypeE                  {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckFileTypeE
+{
+    letter_e                                          CheckPipe1                      {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckPipe1
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              CheckFileName                   {}
+}
+
+
+CheckFileNameReq
+{
+    letter_e                                          CheckFileName                   {}
+    letter_d                                          CheckFileName                   {}
+    digit_2                                           Error                           {}
+    letter_k                                          CheckFileName                   {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          CheckFileName                   {}
+    letter_i                                          CheckFileName                   {}
+    letter_l                                          CheckFileName                   {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               CheckFileName                   {}
+    letter_g_z(c: char)                               CheckFileName                   {}
+    special                                           CheckFileName                   {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckFileName
+{
+    letter_e                                          CheckFileName                   {}
+    letter_d                                          CheckFileName                   {}
+    digit_2                                           Error                           {}
+    letter_k                                          CheckFileName                   {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          CheckFileName                   {}
+    letter_i                                          CheckFileName                   {}
+    letter_l                                          CheckFileName                   {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               CheckFileName                   {}
+    letter_g_z(c: char)                               CheckFileName                   {}
+    special                                           CheckFileName                   {}
+    EOS                                               Error                           {}
+    pipe                                              CheckFileSizeReq                {}
+}
+
+CheckFileSizeReq
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           CheckFileSize                   {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    CheckFileSize                   {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckFileSize
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           CheckFileSize                   {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    CheckFileSize                   {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              CheckFileHash                   {}
+}
+
+CheckFileHash
+{
+    letter_e [ctxt.getHash().isUnderOrEqMax()]        CheckFileHash                   {appendToHash('e');}
+    letter_e                                          Error                           {}
+    letter_d [ctxt.getHash().isUnderOrEqMax()]        CheckFileHash                   {appendToHash('d');}
+    letter_d                                          Error                           {}
+    digit_2 [ctxt.getHash().isUnderOrEqMax()]         CheckFileHash                   {appendToHash('2');}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f [ctxt.getHash().isUnderOrEqMax()]        CheckFileHash                   {appendToHash('f');}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char) [ctxt.getHash().isUnderOrEqMax()]  CheckFileHash                   {appendToHash(c);}
+    digit(c: char)                                    Error                           {}
+letter_a_c(c: char) [ctxt.getHash().isUnderOrEqMax()] CheckFileHash                   {appendToHash(c);}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe [ctxt.getHash().isEqMax()]                CheckSlashLast                  {}
+    pipe                                              Error                           {}
+}
+
+CheckSlashLast
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             CheckEOS                        {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+CheckEOS
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Ok                              {accept();}
+    pipe                                              Error                           {}
+}
+
+Ok
+{
+    letter_e                                          Error                           {unaccept();}
+    letter_d                                          Error                           {unaccept();}
+    digit_2                                           Error                           {unaccept();}
+    letter_k                                          Error                           {unaccept();}
+    colon                                             Error                           {unaccept();}
+    slash                                             Error                           {unaccept();}
+    letter_f                                          Error                           {unaccept();}
+    letter_i                                          Error                           {unaccept();}
+    letter_l                                          Error                           {unaccept();}
+    digit(c: char)                                    Error                           {unaccept();}
+    letter_a_c(c: char)                               Error                           {unaccept();}
+    letter_g_z(c: char)                               Error                           {unaccept();}
+    special                                           Error                           {unaccept();}
+    EOS                                               Error                           {unaccept();}
+    pipe                                              Error                           {unaccept();}
+}
+
+Error
+{
+    letter_e                                          Error                           {}
+    letter_d                                          Error                           {}
+    digit_2                                           Error                           {}
+    letter_k                                          Error                           {}
+    colon                                             Error                           {}
+    slash                                             Error                           {}
+    letter_f                                          Error                           {}
+    letter_i                                          Error                           {}
+    letter_l                                          Error                           {}
+    digit(c: char)                                    Error                           {}
+    letter_a_c(c: char)                               Error                           {}
+    letter_g_z(c: char)                               Error                           {}
+    special                                           Error                           {}
+    EOS                                               Error                           {}
+    pipe                                              Error                           {}
+}
+
+Default
+{
+    unknown                                           Error                           {unaccept();}
+}
+%%
