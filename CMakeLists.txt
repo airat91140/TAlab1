@@ -3,7 +3,7 @@ project(lab1)
 
 set(CMAKE_CXX_STANDARD 17)
 
-execute_process(COMMAND java "-jar" "${PROJECT_SOURCE_DIR}/bin/Smc.jar" "-c++" "-d" ${PROJECT_SOURCE_DIR}/gened "${PROJECT_SOURCE_DIR}/src/CheckStr.sm"
+execute_process(COMMAND java "-jar" "${PROJECT_SOURCE_DIR}/bin/Smc.jar" "-c++" "-d" ${PROJECT_SOURCE_DIR}/smc_gened "${PROJECT_SOURCE_DIR}/src/CheckStr.sm"
         RESULT_VARIABLE res
         OUTPUT_VARIABLE out
         ERROR_VARIABLE  err
@@ -11,9 +11,9 @@ execute_process(COMMAND java "-jar" "${PROJECT_SOURCE_DIR}/bin/Smc.jar" "-c++" "
 
 message("${err}")
 
-include_directories(src gened lib/C++)
+include_directories(src smc_gened lib/C++)
 
-add_subdirectory(gened)
+add_subdirectory(smc_gened)
 add_subdirectory(src)
 
 add_executable(lab1 main.cpp)

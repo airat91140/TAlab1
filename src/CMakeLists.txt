@@ -1,6 +1,6 @@
 Project(lab1_sources)
 
-include_directories(../lib/C++ ../gened)
+include_directories(../lib/C++ ../smc_gened)
 
 add_library(src STATIC Hash.cpp CheckStr.cpp)
 
