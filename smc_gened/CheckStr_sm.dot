@@ -1,0 +1,1168 @@
+digraph CheckStr {
+
+    node
+        [shape=Mrecord width=1.5];
+
+    subgraph cluster_mainMap {
+
+        label="mainMap";
+
+        //
+        // States (Nodes)
+        //
+
+        "mainMap::Start"
+            [label="{Start}"];
+
+        "mainMap::CheckProtocolD"
+            [label="{CheckProtocolD}"];
+
+        "mainMap::CheckProtocol2"
+            [label="{CheckProtocol2}"];
+
+        "mainMap::CheckProtocolK"
+            [label="{CheckProtocolK}"];
+
+        "mainMap::CheckProtocolColon"
+            [label="{CheckProtocolColon}"];
+
+        "mainMap::CheckProtocolSlash1"
+            [label="{CheckProtocolSlash1}"];
+
+        "mainMap::CheckProtocolSlash2"
+            [label="{CheckProtocolSlash2}"];
+
+        "mainMap::CheckPipe0"
+            [label="{CheckPipe0}"];
+
+        "mainMap::CheckFileTypeF"
+            [label="{CheckFileTypeF}"];
+
+        "mainMap::CheckFileTypeI"
+            [label="{CheckFileTypeI}"];
+
+        "mainMap::CheckFileTypeL"
+            [label="{CheckFileTypeL}"];
+
+        "mainMap::CheckFileTypeE"
+            [label="{CheckFileTypeE}"];
+
+        "mainMap::CheckPipe1"
+            [label="{CheckPipe1}"];
+
+        "mainMap::CheckFileNameReq"
+            [label="{CheckFileNameReq}"];
+
+        "mainMap::CheckFileName"
+            [label="{CheckFileName}"];
+
+        "mainMap::CheckFileSizeReq"
+            [label="{CheckFileSizeReq}"];
+
+        "mainMap::CheckFileSize"
+            [label="{CheckFileSize}"];
+
+        "mainMap::CheckFileHash"
+            [label="{CheckFileHash}"];
+
+        "mainMap::CheckSlashLast"
+            [label="{CheckSlashLast}"];
+
+        "mainMap::CheckEOS"
+            [label="{CheckEOS}"];
+
+        "mainMap::Ok"
+            [label="{Ok}"];
+
+        "mainMap::Error"
+            [label="{Error}"];
+
+        "%start"
+            [label="" shape=circle style=filled fillcolor=black width=0.25];
+
+    }
+
+    //
+    // Transitions (Edges)
+    //
+
+    "mainMap::Start" -> "mainMap::CheckProtocolD"
+        [label="letter_e/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::Start" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::CheckProtocol2"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckProtocolD" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::CheckProtocolK"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckProtocol2" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::CheckProtocolColon"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckProtocolK" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::CheckProtocolSlash1"
+        [label="colon/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckProtocolColon" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::CheckProtocolSlash2"
+        [label="slash/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckProtocolSlash1" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::CheckPipe0"
+        [label="slash/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckProtocolSlash2" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::CheckFileTypeF"
+        [label="pipe/\l"];
+
+    "mainMap::CheckPipe0" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::CheckFileTypeI"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckFileTypeF" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::CheckFileTypeL"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckFileTypeI" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::CheckFileTypeE"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckFileTypeL" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::CheckPipe1"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckFileTypeE" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::CheckFileNameReq"
+        [label="pipe/\l"];
+
+    "mainMap::CheckPipe1" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::CheckFileName"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::CheckFileName"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::CheckFileName"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::CheckFileName"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::CheckFileName"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::CheckFileName"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::CheckFileName"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::CheckFileName"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::CheckFileName"
+        [label="special/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckFileNameReq" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::CheckFileName"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::CheckFileName"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::CheckFileName"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::CheckFileName"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::CheckFileName"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::CheckFileName"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::CheckFileName"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::CheckFileName"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::CheckFileName"
+        [label="special/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::CheckFileSizeReq"
+        [label="pipe/\l"];
+
+    "mainMap::CheckFileName" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::CheckFileSize"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::CheckFileSize"
+        [label="digit/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckFileSizeReq" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::CheckFileSize"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::CheckFileSize"
+        [label="digit/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::CheckFileHash"
+        [label="pipe/\l"];
+
+    "mainMap::CheckFileSize" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::CheckFileHash"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::CheckFileHash"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::CheckFileHash"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::CheckFileHash"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::CheckFileHash"
+        [label="digit/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::CheckFileHash"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::CheckSlashLast"
+        [label="pipe/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckFileHash" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::CheckEOS"
+        [label="slash/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckSlashLast" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Ok"
+        [label="EOS/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::CheckEOS" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::Ok" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="letter_e/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="letter_d/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="digit_2/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="letter_k/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="colon/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="slash/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="letter_f/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="letter_i/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="letter_l/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="digit/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="letter_a_c/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="letter_g_z/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="special/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="EOS/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="pipe/\l"];
+
+    "mainMap::Error" -> "mainMap::Error"
+        [label="unknown/\l"];
+
+    "%start" -> "mainMap::Start"
+
+}

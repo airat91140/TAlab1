@@ -182,4 +182,8 @@ bool CheckStr::check(std::string str) {
     return isAccepted;
 }
 
+bool CheckStr::getIsAccepted() const {
+    return isAccepted;
+}
+
 

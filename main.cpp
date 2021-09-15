@@ -1,8 +1,15 @@
 #include <iostream>
-#include "CheckStr.h"
+#include "Dialogue.h"
 
-int main() {
-    CheckStr a;
-    std::cout << (a.check("ed2k://|file|abcjcjd|654356|aaaaeeee5454100f|/") ? "true" : "fasle");
+int main(int argc, char *argv[]) {
+    try
+    {
+        Dialogue dialogue(argc, argv);
+        dialogue.run();
+    }
+    catch (const std::exception &ex)
+    {
+        std::cout << "Error: " << ex.what() << std::endl;
+    }
     return 0;
 }

@@ -696,7 +696,7 @@ void mainMap_CheckProtocolColon::colon(CheckStrContext& context)
 {
 
     context.getState().Exit(context);
-    context.setState(mainMap::Error);
+    context.setState(mainMap::CheckProtocolSlash1);
     context.getState().Entry(context);
 
 }
@@ -804,7 +804,7 @@ void mainMap_CheckProtocolColon::slash(CheckStrContext& context)
 {
 
     context.getState().Exit(context);
-    context.setState(mainMap::CheckProtocolSlash1);
+    context.setState(mainMap::Error);
     context.getState().Entry(context);
 
 }
@@ -1875,7 +1875,7 @@ void mainMap_CheckPipe1::pipe(CheckStrContext& context)
 {
 
     context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
+    context.setState(mainMap::CheckFileNameReq);
     context.getState().Entry(context);
 
 }

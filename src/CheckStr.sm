@@ -106,8 +106,8 @@ CheckProtocolColon
     letter_d                                          Error                           {}
     digit_2                                           Error                           {}
     letter_k                                          Error                           {}
-    colon                                             Error                           {}
-    slash                                             CheckProtocolSlash1             {}
+    colon                                             CheckProtocolSlash1             {}
+    slash                                             Error                           {}
     letter_f                                          Error                           {}
     letter_i                                          Error                           {}
     letter_l                                          Error                           {}
@@ -268,7 +268,7 @@ CheckPipe1
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
     EOS                                               Error                           {}
-    pipe                                              CheckFileName                   {}
+    pipe                                              CheckFileNameReq                {}
 }
 
 
@@ -370,7 +370,7 @@ letter_a_c(c: char) [ctxt.getHash().isUnderOrEqMax()] CheckFileHash             
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
     EOS                                               Error                           {}
-    pipe [ctxt.getHash().isEqMax()]                CheckSlashLast                  {}
+    pipe [ctxt.getHash().isEqMax()]                   CheckSlashLast                  {}
     pipe                                              Error                           {}
 }
 

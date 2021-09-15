@@ -26,7 +26,7 @@ public:
 
     void append(char c); // pushes one char at the end of hash
 
-    inline void reset(); // emptifies string
+    void reset(); // emptifies string
 
     std::string getHash() const;
 };

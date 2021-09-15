@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.16)
 project(lab1)
 
 set(CMAKE_CXX_STANDARD 17)
+set(smc_flags "-graph" "-glevel 2" "dot" "-T" "png" "-table")
 
 execute_process(COMMAND java "-jar" "${PROJECT_SOURCE_DIR}/bin/Smc.jar" "-c++" "-d" ${PROJECT_SOURCE_DIR}/smc_gened "${PROJECT_SOURCE_DIR}/src/CheckStr.sm"
         RESULT_VARIABLE res

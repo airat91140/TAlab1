@@ -23,14 +23,16 @@ class CheckStrContext;
 #endif
         Hash hash; // field where hash is stored
         bool isAccepted;
-
-    public:
+public:
+        bool getIsAccepted() const;
         CheckStr();
         inline void accept() {isAccepted = true;}
         inline void unaccept() {isAccepted = false;}
         Hash getHash() const;
         void appendToHash(char c); // append one letter to existing hash
         bool check(std::string str);
+        inline void reset() {hash.reset(); isAccepted = false;}
+
     };
 
 #endif //LAB1_CHECKSTR_H
