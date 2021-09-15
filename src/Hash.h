@@ -22,13 +22,13 @@ public:
 
     void setMax(int max_);
 
-    Hash(int max_ = 32);
+    explicit Hash(int max_ = 32);
 
     void append(char c); // pushes one char at the end of hash
 
     void reset(); // emptifies string
 
-    std::string getHash() const;
+    [[nodiscard]] std::string getHash() const;
 };
 
 

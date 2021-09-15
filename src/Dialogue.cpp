@@ -37,8 +37,7 @@ Dialogue::Dialogue(int argc, char *argv[]) {
                 std::getline(std::cin, tmp);
                 if (tmp == "y") {
                     out.close();
-                }
-                else {
+                } else {
                     in.close();
                     out.close();
                     throw std::invalid_argument("File exists");
@@ -55,19 +54,17 @@ void Dialogue::run() {
     } else {
         std::list<std::string> result;
         result = runFromSource();
-        for (const auto &it : result) {
-            (out.is_open() ? out : std :: cout) << it << std::endl;
+        for (const auto &it: result) {
+            (out.is_open() ? out : std::cout) << it << std::endl;
         }
     }
 }
 
 void Dialogue::runFast() {
-    CheckStr checker;
-    bool result;
     for (int i = 1; i < strNum; ++i) {
-        result = checker.check(strings[i]);
+        CheckStr checker;
+        checker.check(strings[i]);
         std::cout << formResult(strings[i], checker) << std::endl;
-        checker.reset();
     }
 }
 
@@ -76,11 +73,10 @@ std::list<std::string> Dialogue::runFromSource() {
         std::cout << "Enter your strings below" << std::endl;
     std::string line;
     std::list<std::string> result;
-    CheckStr checker;
     while (std::getline(in.is_open() ? in : std::cin, line)) {
+        CheckStr checker;
         checker.check(line);
         result.push_back(formResult(line, checker));
-        checker.reset();
     }
     return result;
 }

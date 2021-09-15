@@ -17,7 +17,7 @@ std::string Hash::getHash() const {
     return str;
 }
 
-Hash::Hash(int max_) : max(max_){
+Hash::Hash(int max_) : max(max_) {
     str.reserve(max_);
 }
 

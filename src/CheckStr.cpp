@@ -5,14 +5,14 @@
 #include "CheckStr.h"
 
 
-
 CheckStr::CheckStr()
 #ifndef CRTP
-    : hash(32), isAccepted(false), _fsm(*this)
+        : hash(32), isAccepted(false), _fsm(*this)
 #else
-    : counter(32), isAccepted(false)
+: counter(32), isAccepted(false)
 #endif
 {
+#define FSM_DEBUG
 #ifdef FSM_DEBUG
 #ifdef CRTP
     setDebugFlag(true);
@@ -30,7 +30,7 @@ void CheckStr::appendToHash(char c) {
     hash.append(c);
 }
 
-bool CheckStr::check(std::string str) {
+bool CheckStr::check(const std::string &str) {
 #ifdef CRTP
     enterStartState();
     for (char c : str) {
@@ -106,13 +106,15 @@ bool CheckStr::check(std::string str) {
     EOS();
 #else
     _fsm.enterStartState();
-    for (char c : str) {
+    for (char c: str) {
         switch (c) {
             case 'e':
+            case 'E':
                 _fsm.letter_e();
                 break;
 
             case 'd':
+            case 'D':
                 _fsm.letter_d();
                 break;
 
@@ -121,6 +123,7 @@ bool CheckStr::check(std::string str) {
                 break;
 
             case 'k':
+            case 'K':
                 _fsm.letter_k();
                 break;
 
@@ -133,14 +136,17 @@ bool CheckStr::check(std::string str) {
                 break;
 
             case 'f':
+            case 'F':
                 _fsm.letter_f();
                 break;
 
             case 'i':
+            case 'I':
                 _fsm.letter_i();
                 break;
 
             case 'l':
+            case 'L':
                 _fsm.letter_l();
                 break;
 
@@ -150,12 +156,16 @@ bool CheckStr::check(std::string str) {
                 break;
 
             case 'a'...'c':
+            case 'A'...'C':
                 _fsm.letter_a_c(c);
                 break;
 
             case 'g'...'h':
+            case 'G'...'H':
             case 'j':
+            case 'J':
             case 'm'...'z':
+            case 'M'...'Z':
                 _fsm.letter_g_z(c);
                 break;
 
