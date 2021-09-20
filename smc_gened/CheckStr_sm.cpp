@@ -10,3414 +10,3417 @@
 
 using namespace statemap;
 
-// Static class declarations.
-mainMap_Start mainMap::Start("mainMap::Start", 0);
-mainMap_CheckProtocolD mainMap::CheckProtocolD("mainMap::CheckProtocolD", 1);
-mainMap_CheckProtocol2 mainMap::CheckProtocol2("mainMap::CheckProtocol2", 2);
-mainMap_CheckProtocolK mainMap::CheckProtocolK("mainMap::CheckProtocolK", 3);
-mainMap_CheckProtocolColon mainMap::CheckProtocolColon("mainMap::CheckProtocolColon", 4);
-mainMap_CheckProtocolSlash1 mainMap::CheckProtocolSlash1("mainMap::CheckProtocolSlash1", 5);
-mainMap_CheckProtocolSlash2 mainMap::CheckProtocolSlash2("mainMap::CheckProtocolSlash2", 6);
-mainMap_CheckPipe0 mainMap::CheckPipe0("mainMap::CheckPipe0", 7);
-mainMap_CheckFileTypeF mainMap::CheckFileTypeF("mainMap::CheckFileTypeF", 8);
-mainMap_CheckFileTypeI mainMap::CheckFileTypeI("mainMap::CheckFileTypeI", 9);
-mainMap_CheckFileTypeL mainMap::CheckFileTypeL("mainMap::CheckFileTypeL", 10);
-mainMap_CheckFileTypeE mainMap::CheckFileTypeE("mainMap::CheckFileTypeE", 11);
-mainMap_CheckPipe1 mainMap::CheckPipe1("mainMap::CheckPipe1", 12);
-mainMap_CheckFileNameReq mainMap::CheckFileNameReq("mainMap::CheckFileNameReq", 13);
-mainMap_CheckFileName mainMap::CheckFileName("mainMap::CheckFileName", 14);
-mainMap_CheckFileSizeReq mainMap::CheckFileSizeReq("mainMap::CheckFileSizeReq", 15);
-mainMap_CheckFileSize mainMap::CheckFileSize("mainMap::CheckFileSize", 16);
-mainMap_CheckFileHash mainMap::CheckFileHash("mainMap::CheckFileHash", 17);
-mainMap_CheckSlashLast mainMap::CheckSlashLast("mainMap::CheckSlashLast", 18);
-mainMap_CheckEOS mainMap::CheckEOS("mainMap::CheckEOS", 19);
-mainMap_Ok mainMap::Ok("mainMap::Ok", 20);
-mainMap_Error mainMap::Error("mainMap::Error", 21);
-
-void CheckStrState::EOS(CheckStrContext& context)
+namespace lab1
 {
-    Default(context);
-}
+    // Static class declarations.
+    mainMap_Start mainMap::Start("mainMap::Start", 0);
+    mainMap_CheckProtocolD mainMap::CheckProtocolD("mainMap::CheckProtocolD", 1);
+    mainMap_CheckProtocol2 mainMap::CheckProtocol2("mainMap::CheckProtocol2", 2);
+    mainMap_CheckProtocolK mainMap::CheckProtocolK("mainMap::CheckProtocolK", 3);
+    mainMap_CheckProtocolColon mainMap::CheckProtocolColon("mainMap::CheckProtocolColon", 4);
+    mainMap_CheckProtocolSlash1 mainMap::CheckProtocolSlash1("mainMap::CheckProtocolSlash1", 5);
+    mainMap_CheckProtocolSlash2 mainMap::CheckProtocolSlash2("mainMap::CheckProtocolSlash2", 6);
+    mainMap_CheckPipe0 mainMap::CheckPipe0("mainMap::CheckPipe0", 7);
+    mainMap_CheckFileTypeF mainMap::CheckFileTypeF("mainMap::CheckFileTypeF", 8);
+    mainMap_CheckFileTypeI mainMap::CheckFileTypeI("mainMap::CheckFileTypeI", 9);
+    mainMap_CheckFileTypeL mainMap::CheckFileTypeL("mainMap::CheckFileTypeL", 10);
+    mainMap_CheckFileTypeE mainMap::CheckFileTypeE("mainMap::CheckFileTypeE", 11);
+    mainMap_CheckPipe1 mainMap::CheckPipe1("mainMap::CheckPipe1", 12);
+    mainMap_CheckFileNameReq mainMap::CheckFileNameReq("mainMap::CheckFileNameReq", 13);
+    mainMap_CheckFileName mainMap::CheckFileName("mainMap::CheckFileName", 14);
+    mainMap_CheckFileSizeReq mainMap::CheckFileSizeReq("mainMap::CheckFileSizeReq", 15);
+    mainMap_CheckFileSize mainMap::CheckFileSize("mainMap::CheckFileSize", 16);
+    mainMap_CheckFileHash mainMap::CheckFileHash("mainMap::CheckFileHash", 17);
+    mainMap_CheckSlashLast mainMap::CheckSlashLast("mainMap::CheckSlashLast", 18);
+    mainMap_CheckEOS mainMap::CheckEOS("mainMap::CheckEOS", 19);
+    mainMap_Ok mainMap::Ok("mainMap::Ok", 20);
+    mainMap_Error mainMap::Error("mainMap::Error", 21);
 
-void CheckStrState::colon(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::digit(CheckStrContext& context, char c)
-{
-    Default(context);
-}
-
-void CheckStrState::digit_2(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::letter_a_c(CheckStrContext& context, char c)
-{
-    Default(context);
-}
-
-void CheckStrState::letter_d(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::letter_e(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::letter_f(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::letter_g_z(CheckStrContext& context, char c)
-{
-    Default(context);
-}
-
-void CheckStrState::letter_i(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::letter_k(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::letter_l(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::pipe(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::slash(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::special(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::unknown(CheckStrContext& context)
-{
-    Default(context);
-}
-
-void CheckStrState::Default(CheckStrContext& context)
-{
-    throw (
-        TransitionUndefinedException(
-            context.getState().getName(),
-            context.getTransition()));
-
-}
-
-void mainMap_Default::unknown(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
+    void CheckStrState::EOS(CheckStrContext& context)
     {
-        ctxt.unaccept();
-        context.setState(mainMap::Error);
+        Default(context);
     }
-    catch (...)
+
+    void CheckStrState::colon(CheckStrContext& context)
     {
-        context.setState(mainMap::Error);
-        throw;
+        Default(context);
     }
-    context.getState().Entry(context);
 
-}
-
-void mainMap_Start::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckProtocolD);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Start::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckProtocol2);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolD::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckProtocolK);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocol2::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckProtocolColon);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolK::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckProtocolSlash1);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolColon::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckProtocolSlash2);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash1::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckPipe0);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckProtocolSlash2::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileTypeF);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe0::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileTypeI);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeF::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileTypeL);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeI::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileTypeE);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeL::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckPipe1);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileTypeE::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileNameReq);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckPipe1::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileNameReq::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileSizeReq);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileName::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileName);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileSize);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileSize);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSizeReq::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileSize);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileSize);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckFileHash);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileSize::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileHash::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileHash::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileHash::digit(CheckStrContext& context, char c)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    if (ctxt.getHash().isUnderOrEqMax())
+    void CheckStrState::digit(CheckStrContext& context, char c)
     {
+        Default(context);
+    }
+
+    void CheckStrState::digit_2(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::letter_a_c(CheckStrContext& context, char c)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::letter_d(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::letter_e(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::letter_f(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::letter_g_z(CheckStrContext& context, char c)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::letter_i(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::letter_k(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::letter_l(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::pipe(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::slash(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::special(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::unknown(CheckStrContext& context)
+    {
+        Default(context);
+    }
+
+    void CheckStrState::Default(CheckStrContext& context)
+    {
+        throw (
+            TransitionUndefinedException(
+                context.getState().getName(),
+                context.getTransition()));
+
+    }
+
+    void mainMap_Default::unknown(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
         context.getState().Exit(context);
         context.clearState();
         try
         {
-            ctxt.appendToHash(c);
-            context.setState(mainMap::CheckFileHash);
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
         }
         catch (...)
         {
-            context.setState(mainMap::CheckFileHash);
+            context.setState(mainMap::Error);
             throw;
         }
         context.getState().Entry(context);
+
     }
-    else
+
+    void mainMap_Start::EOS(CheckStrContext& context)
     {
+
         context.getState().Exit(context);
         context.setState(mainMap::Error);
         context.getState().Entry(context);
+
     }
 
-}
-
-void mainMap_CheckFileHash::digit_2(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    if (ctxt.getHash().isUnderOrEqMax())
+    void mainMap_Start::colon(CheckStrContext& context)
     {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckProtocolD);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Start::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckProtocol2);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolD::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckProtocolK);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocol2::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckProtocolColon);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolK::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckProtocolSlash1);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolColon::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckProtocolSlash2);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash1::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckPipe0);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckProtocolSlash2::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileTypeF);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe0::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileTypeI);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeF::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileTypeL);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeI::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileTypeE);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeL::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckPipe1);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileTypeE::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileNameReq);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckPipe1::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileNameReq::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileSizeReq);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileName::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileName);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileSize);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileSize);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSizeReq::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileSize);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileSize);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckFileHash);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileSize::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileHash::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileHash::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileHash::digit(CheckStrContext& context, char c)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        if (ctxt.getHash().isUnderOrEqMax())
+        {
+            context.getState().Exit(context);
+            context.clearState();
+            try
+            {
+                ctxt.appendToHash(c);
+                context.setState(mainMap::CheckFileHash);
+            }
+            catch (...)
+            {
+                context.setState(mainMap::CheckFileHash);
+                throw;
+            }
+            context.getState().Entry(context);
+        }
+        else
+        {
+            context.getState().Exit(context);
+            context.setState(mainMap::Error);
+            context.getState().Entry(context);
+        }
+
+    }
+
+    void mainMap_CheckFileHash::digit_2(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        if (ctxt.getHash().isUnderOrEqMax())
+        {
+            context.getState().Exit(context);
+            context.clearState();
+            try
+            {
+                ctxt.appendToHash('2');
+                context.setState(mainMap::CheckFileHash);
+            }
+            catch (...)
+            {
+                context.setState(mainMap::CheckFileHash);
+                throw;
+            }
+            context.getState().Entry(context);
+        }
+        else
+        {
+            context.getState().Exit(context);
+            context.setState(mainMap::Error);
+            context.getState().Entry(context);
+        }
+
+    }
+
+    void mainMap_CheckFileHash::letter_a_c(CheckStrContext& context, char c)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        if (ctxt.getHash().isUnderOrEqMax())
+        {
+            context.getState().Exit(context);
+            context.clearState();
+            try
+            {
+                ctxt.appendToHash(c);
+                context.setState(mainMap::CheckFileHash);
+            }
+            catch (...)
+            {
+                context.setState(mainMap::CheckFileHash);
+                throw;
+            }
+            context.getState().Entry(context);
+        }
+        else
+        {
+            context.getState().Exit(context);
+            context.setState(mainMap::Error);
+            context.getState().Entry(context);
+        }
+
+    }
+
+    void mainMap_CheckFileHash::letter_d(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        if (ctxt.getHash().isUnderOrEqMax())
+        {
+            context.getState().Exit(context);
+            context.clearState();
+            try
+            {
+                ctxt.appendToHash('d');
+                context.setState(mainMap::CheckFileHash);
+            }
+            catch (...)
+            {
+                context.setState(mainMap::CheckFileHash);
+                throw;
+            }
+            context.getState().Entry(context);
+        }
+        else
+        {
+            context.getState().Exit(context);
+            context.setState(mainMap::Error);
+            context.getState().Entry(context);
+        }
+
+    }
+
+    void mainMap_CheckFileHash::letter_e(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        if (ctxt.getHash().isUnderOrEqMax())
+        {
+            context.getState().Exit(context);
+            context.clearState();
+            try
+            {
+                ctxt.appendToHash('e');
+                context.setState(mainMap::CheckFileHash);
+            }
+            catch (...)
+            {
+                context.setState(mainMap::CheckFileHash);
+                throw;
+            }
+            context.getState().Entry(context);
+        }
+        else
+        {
+            context.getState().Exit(context);
+            context.setState(mainMap::Error);
+            context.getState().Entry(context);
+        }
+
+    }
+
+    void mainMap_CheckFileHash::letter_f(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        if (ctxt.getHash().isUnderOrEqMax())
+        {
+            context.getState().Exit(context);
+            context.clearState();
+            try
+            {
+                ctxt.appendToHash('f');
+                context.setState(mainMap::CheckFileHash);
+            }
+            catch (...)
+            {
+                context.setState(mainMap::CheckFileHash);
+                throw;
+            }
+            context.getState().Entry(context);
+        }
+        else
+        {
+            context.getState().Exit(context);
+            context.setState(mainMap::Error);
+            context.getState().Entry(context);
+        }
+
+    }
+
+    void mainMap_CheckFileHash::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileHash::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileHash::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileHash::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileHash::pipe(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        if (ctxt.getHash().isEqMax())
+        {
+            context.getState().Exit(context);
+            // No actions.
+            context.setState(mainMap::CheckSlashLast);
+            context.getState().Entry(context);
+        }
+        else
+        {
+            context.getState().Exit(context);
+            context.setState(mainMap::Error);
+            context.getState().Entry(context);
+        }
+
+    }
+
+    void mainMap_CheckFileHash::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckFileHash::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::EOS(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::colon(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::digit(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::CheckEOS);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckSlashLast::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::EOS(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
         context.getState().Exit(context);
         context.clearState();
         try
         {
-            ctxt.appendToHash('2');
-            context.setState(mainMap::CheckFileHash);
+            ctxt.accept();
+            context.setState(mainMap::Ok);
         }
         catch (...)
         {
-            context.setState(mainMap::CheckFileHash);
+            context.setState(mainMap::Ok);
             throw;
         }
         context.getState().Entry(context);
+
     }
-    else
+
+    void mainMap_CheckEOS::colon(CheckStrContext& context)
     {
+
         context.getState().Exit(context);
         context.setState(mainMap::Error);
         context.getState().Entry(context);
+
     }
 
-}
-
-void mainMap_CheckFileHash::letter_a_c(CheckStrContext& context, char c)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    if (ctxt.getHash().isUnderOrEqMax())
+    void mainMap_CheckEOS::digit(CheckStrContext& context, char c)
     {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::digit_2(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::letter_a_c(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::letter_d(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::letter_e(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::letter_f(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::letter_g_z(CheckStrContext& context, char c)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::letter_i(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::letter_k(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::letter_l(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::pipe(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::slash(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_CheckEOS::special(CheckStrContext& context)
+    {
+
+        context.getState().Exit(context);
+        context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::EOS(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
         context.getState().Exit(context);
         context.clearState();
         try
         {
-            ctxt.appendToHash(c);
-            context.setState(mainMap::CheckFileHash);
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
         }
         catch (...)
         {
-            context.setState(mainMap::CheckFileHash);
+            context.setState(mainMap::Error);
             throw;
         }
         context.getState().Entry(context);
-    }
-    else
-    {
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
+
     }
 
-}
-
-void mainMap_CheckFileHash::letter_d(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    if (ctxt.getHash().isUnderOrEqMax())
+    void mainMap_Ok::colon(CheckStrContext& context)
     {
+        CheckStr& ctxt = context.getOwner();
+
         context.getState().Exit(context);
         context.clearState();
         try
         {
-            ctxt.appendToHash('d');
-            context.setState(mainMap::CheckFileHash);
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
         }
         catch (...)
         {
-            context.setState(mainMap::CheckFileHash);
+            context.setState(mainMap::Error);
             throw;
         }
         context.getState().Entry(context);
-    }
-    else
-    {
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
+
     }
 
-}
-
-void mainMap_CheckFileHash::letter_e(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    if (ctxt.getHash().isUnderOrEqMax())
+    void mainMap_Ok::digit(CheckStrContext& context, char c)
     {
+        CheckStr& ctxt = context.getOwner();
+
         context.getState().Exit(context);
         context.clearState();
         try
         {
-            ctxt.appendToHash('e');
-            context.setState(mainMap::CheckFileHash);
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
         }
         catch (...)
         {
-            context.setState(mainMap::CheckFileHash);
+            context.setState(mainMap::Error);
             throw;
         }
         context.getState().Entry(context);
-    }
-    else
-    {
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
+
     }
 
-}
-
-void mainMap_CheckFileHash::letter_f(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    if (ctxt.getHash().isUnderOrEqMax())
+    void mainMap_Ok::digit_2(CheckStrContext& context)
     {
+        CheckStr& ctxt = context.getOwner();
+
         context.getState().Exit(context);
         context.clearState();
         try
         {
-            ctxt.appendToHash('f');
-            context.setState(mainMap::CheckFileHash);
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
         }
         catch (...)
         {
-            context.setState(mainMap::CheckFileHash);
+            context.setState(mainMap::Error);
             throw;
         }
         context.getState().Entry(context);
+
     }
-    else
+
+    void mainMap_Ok::letter_a_c(CheckStrContext& context, char c)
     {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::letter_d(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::letter_e(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::letter_f(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::letter_g_z(CheckStrContext& context, char c)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::letter_i(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::letter_k(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::letter_l(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::pipe(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::slash(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Ok::special(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.unaccept();
+            context.setState(mainMap::Error);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Error);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
+    void mainMap_Error::EOS(CheckStrContext& context)
+    {
+
         context.getState().Exit(context);
         context.setState(mainMap::Error);
         context.getState().Entry(context);
+
     }
 
-}
-
-void mainMap_CheckFileHash::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileHash::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileHash::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileHash::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileHash::pipe(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    if (ctxt.getHash().isEqMax())
+    void mainMap_Error::colon(CheckStrContext& context)
     {
-        context.getState().Exit(context);
-        // No actions.
-        context.setState(mainMap::CheckSlashLast);
-        context.getState().Entry(context);
-    }
-    else
-    {
+
         context.getState().Exit(context);
         context.setState(mainMap::Error);
         context.getState().Entry(context);
+
     }
 
-}
-
-void mainMap_CheckFileHash::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckFileHash::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::CheckEOS);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckSlashLast::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::EOS(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
+    void mainMap_Error::digit(CheckStrContext& context, char c)
     {
-        ctxt.accept();
-        context.setState(mainMap::Ok);
-    }
-    catch (...)
-    {
-        context.setState(mainMap::Ok);
-        throw;
-    }
-    context.getState().Entry(context);
 
-}
-
-void mainMap_CheckEOS::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_CheckEOS::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Ok::EOS(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
-    {
-        ctxt.unaccept();
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
     }
-    catch (...)
+
+    void mainMap_Error::digit_2(CheckStrContext& context)
     {
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
-        throw;
+        context.getState().Entry(context);
+
     }
-    context.getState().Entry(context);
 
-}
-
-void mainMap_Ok::colon(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
+    void mainMap_Error::letter_a_c(CheckStrContext& context, char c)
     {
-        ctxt.unaccept();
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
     }
-    catch (...)
+
+    void mainMap_Error::letter_d(CheckStrContext& context)
     {
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
-        throw;
+        context.getState().Entry(context);
+
     }
-    context.getState().Entry(context);
 
-}
-
-void mainMap_Ok::digit(CheckStrContext& context, char c)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
+    void mainMap_Error::letter_e(CheckStrContext& context)
     {
-        ctxt.unaccept();
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
     }
-    catch (...)
+
+    void mainMap_Error::letter_f(CheckStrContext& context)
     {
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
-        throw;
+        context.getState().Entry(context);
+
     }
-    context.getState().Entry(context);
 
-}
-
-void mainMap_Ok::digit_2(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
+    void mainMap_Error::letter_g_z(CheckStrContext& context, char c)
     {
-        ctxt.unaccept();
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
     }
-    catch (...)
+
+    void mainMap_Error::letter_i(CheckStrContext& context)
     {
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
-        throw;
+        context.getState().Entry(context);
+
     }
-    context.getState().Entry(context);
 
-}
-
-void mainMap_Ok::letter_a_c(CheckStrContext& context, char c)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
+    void mainMap_Error::letter_k(CheckStrContext& context)
     {
-        ctxt.unaccept();
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
     }
-    catch (...)
+
+    void mainMap_Error::letter_l(CheckStrContext& context)
     {
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
-        throw;
+        context.getState().Entry(context);
+
     }
-    context.getState().Entry(context);
 
-}
-
-void mainMap_Ok::letter_d(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
+    void mainMap_Error::pipe(CheckStrContext& context)
     {
-        ctxt.unaccept();
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
     }
-    catch (...)
+
+    void mainMap_Error::slash(CheckStrContext& context)
     {
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
-        throw;
+        context.getState().Entry(context);
+
     }
-    context.getState().Entry(context);
 
-}
-
-void mainMap_Ok::letter_e(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
+    void mainMap_Error::special(CheckStrContext& context)
     {
-        ctxt.unaccept();
+
+        context.getState().Exit(context);
         context.setState(mainMap::Error);
+        context.getState().Entry(context);
+
     }
-    catch (...)
-    {
-        context.setState(mainMap::Error);
-        throw;
-    }
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Ok::letter_f(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
-    {
-        ctxt.unaccept();
-        context.setState(mainMap::Error);
-    }
-    catch (...)
-    {
-        context.setState(mainMap::Error);
-        throw;
-    }
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Ok::letter_g_z(CheckStrContext& context, char c)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
-    {
-        ctxt.unaccept();
-        context.setState(mainMap::Error);
-    }
-    catch (...)
-    {
-        context.setState(mainMap::Error);
-        throw;
-    }
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Ok::letter_i(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
-    {
-        ctxt.unaccept();
-        context.setState(mainMap::Error);
-    }
-    catch (...)
-    {
-        context.setState(mainMap::Error);
-        throw;
-    }
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Ok::letter_k(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
-    {
-        ctxt.unaccept();
-        context.setState(mainMap::Error);
-    }
-    catch (...)
-    {
-        context.setState(mainMap::Error);
-        throw;
-    }
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Ok::letter_l(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
-    {
-        ctxt.unaccept();
-        context.setState(mainMap::Error);
-    }
-    catch (...)
-    {
-        context.setState(mainMap::Error);
-        throw;
-    }
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Ok::pipe(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
-    {
-        ctxt.unaccept();
-        context.setState(mainMap::Error);
-    }
-    catch (...)
-    {
-        context.setState(mainMap::Error);
-        throw;
-    }
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Ok::slash(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
-    {
-        ctxt.unaccept();
-        context.setState(mainMap::Error);
-    }
-    catch (...)
-    {
-        context.setState(mainMap::Error);
-        throw;
-    }
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Ok::special(CheckStrContext& context)
-{
-    CheckStr& ctxt = context.getOwner();
-
-    context.getState().Exit(context);
-    context.clearState();
-    try
-    {
-        ctxt.unaccept();
-        context.setState(mainMap::Error);
-    }
-    catch (...)
-    {
-        context.setState(mainMap::Error);
-        throw;
-    }
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::EOS(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::colon(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::digit(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::digit_2(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::letter_a_c(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::letter_d(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::letter_e(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::letter_f(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::letter_g_z(CheckStrContext& context, char c)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::letter_i(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::letter_k(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::letter_l(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::pipe(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::slash(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
-}
-
-void mainMap_Error::special(CheckStrContext& context)
-{
-
-    context.getState().Exit(context);
-    context.setState(mainMap::Error);
-    context.getState().Entry(context);
-
 }
 
 //

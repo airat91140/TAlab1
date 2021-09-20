@@ -7,37 +7,50 @@
 
 #include <string>
 #include <CheckStr_sm.h>
+#include <ctime>
+#include <chrono>
 
 #include "Hash.h"
 
-class CheckStrContext;
+namespace lab1 {
+
+    class CheckStrContext;
 
 #ifdef CRTP
-class CheckStr : public CheckStrContext<CheckStr> {
+    class CheckStr : public CheckStrContext<CheckStr> {
 #else
 
-class CheckStr {
+    class CheckStr {
 #endif
-private:
+    private:
 #ifndef CRTP
-    CheckStrContext _fsm;
+        CheckStrContext _fsm;
 #endif
-    Hash hash; // field where hash is stored
-    bool isAccepted;
-public:
-    [[nodiscard]] bool getIsAccepted() const;
+        Hash hash; // field where hash is stored
+        bool isAccepted;
 
-    CheckStr();
+        static std::string genAcceptedStr();
 
-    inline void accept() { isAccepted = true; }
+        static std::string genInacceptedStr();
 
-    inline void unaccept() { isAccepted = false; }
+    public:
+        [[nodiscard]] bool getIsAccepted() const;
 
-    [[nodiscard]] Hash getHash() const;
+        CheckStr();
 
-    void appendToHash(char c); // append one letter to existing hash
-    bool check(const std::string &str);
+        inline void accept() { isAccepted = true; }
 
-};
+        inline void unaccept() { isAccepted = false; }
 
+        [[nodiscard]] Hash getHash() const;
+
+        void appendToHash(char c); // append one letter to existing has
+
+        bool check(const std::string &str);
+
+        void reset();
+
+        static void runTiming();
+    };
+}
 #endif //LAB1_CHECKSTR_H

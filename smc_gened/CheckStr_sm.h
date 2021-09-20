@@ -13,778 +13,781 @@
 
 #include <statemap.h>
 
-// Forward declarations.
-class mainMap;
-class mainMap_Start;
-class mainMap_CheckProtocolD;
-class mainMap_CheckProtocol2;
-class mainMap_CheckProtocolK;
-class mainMap_CheckProtocolColon;
-class mainMap_CheckProtocolSlash1;
-class mainMap_CheckProtocolSlash2;
-class mainMap_CheckPipe0;
-class mainMap_CheckFileTypeF;
-class mainMap_CheckFileTypeI;
-class mainMap_CheckFileTypeL;
-class mainMap_CheckFileTypeE;
-class mainMap_CheckPipe1;
-class mainMap_CheckFileNameReq;
-class mainMap_CheckFileName;
-class mainMap_CheckFileSizeReq;
-class mainMap_CheckFileSize;
-class mainMap_CheckFileHash;
-class mainMap_CheckSlashLast;
-class mainMap_CheckEOS;
-class mainMap_Ok;
-class mainMap_Error;
-class mainMap_Default;
-class CheckStrState;
-class CheckStrContext;
-class CheckStr;
-
-class CheckStrState :
-    public statemap::State
+namespace lab1
 {
-public:
+    // Forward declarations.
+    class mainMap;
+    class mainMap_Start;
+    class mainMap_CheckProtocolD;
+    class mainMap_CheckProtocol2;
+    class mainMap_CheckProtocolK;
+    class mainMap_CheckProtocolColon;
+    class mainMap_CheckProtocolSlash1;
+    class mainMap_CheckProtocolSlash2;
+    class mainMap_CheckPipe0;
+    class mainMap_CheckFileTypeF;
+    class mainMap_CheckFileTypeI;
+    class mainMap_CheckFileTypeL;
+    class mainMap_CheckFileTypeE;
+    class mainMap_CheckPipe1;
+    class mainMap_CheckFileNameReq;
+    class mainMap_CheckFileName;
+    class mainMap_CheckFileSizeReq;
+    class mainMap_CheckFileSize;
+    class mainMap_CheckFileHash;
+    class mainMap_CheckSlashLast;
+    class mainMap_CheckEOS;
+    class mainMap_Ok;
+    class mainMap_Error;
+    class mainMap_Default;
+    class CheckStrState;
+    class CheckStrContext;
+    class CheckStr;
 
-    CheckStrState(const char * const name, const int stateId)
-    : statemap::State(name, stateId)
-    {};
-
-    virtual void Entry(CheckStrContext&) {};
-    virtual void Exit(CheckStrContext&) {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-    virtual void unknown(CheckStrContext& context);
-
-protected:
-
-    virtual void Default(CheckStrContext& context);
-};
-
-class mainMap
-{
-public:
-
-    static mainMap_Start Start;
-    static mainMap_CheckProtocolD CheckProtocolD;
-    static mainMap_CheckProtocol2 CheckProtocol2;
-    static mainMap_CheckProtocolK CheckProtocolK;
-    static mainMap_CheckProtocolColon CheckProtocolColon;
-    static mainMap_CheckProtocolSlash1 CheckProtocolSlash1;
-    static mainMap_CheckProtocolSlash2 CheckProtocolSlash2;
-    static mainMap_CheckPipe0 CheckPipe0;
-    static mainMap_CheckFileTypeF CheckFileTypeF;
-    static mainMap_CheckFileTypeI CheckFileTypeI;
-    static mainMap_CheckFileTypeL CheckFileTypeL;
-    static mainMap_CheckFileTypeE CheckFileTypeE;
-    static mainMap_CheckPipe1 CheckPipe1;
-    static mainMap_CheckFileNameReq CheckFileNameReq;
-    static mainMap_CheckFileName CheckFileName;
-    static mainMap_CheckFileSizeReq CheckFileSizeReq;
-    static mainMap_CheckFileSize CheckFileSize;
-    static mainMap_CheckFileHash CheckFileHash;
-    static mainMap_CheckSlashLast CheckSlashLast;
-    static mainMap_CheckEOS CheckEOS;
-    static mainMap_Ok Ok;
-    static mainMap_Error Error;
-};
-
-class mainMap_Default :
-    public CheckStrState
-{
-public:
-
-    mainMap_Default(const char * const name, const int stateId)
-    : CheckStrState(name, stateId)
-    {};
-
-    virtual void unknown(CheckStrContext& context);
-};
-
-class mainMap_Start :
-    public mainMap_Default
-{
-public:
-    mainMap_Start(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckProtocolD :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckProtocolD(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckProtocol2 :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckProtocol2(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckProtocolK :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckProtocolK(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckProtocolColon :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckProtocolColon(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckProtocolSlash1 :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckProtocolSlash1(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckProtocolSlash2 :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckProtocolSlash2(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckPipe0 :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckPipe0(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckFileTypeF :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckFileTypeF(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckFileTypeI :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckFileTypeI(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckFileTypeL :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckFileTypeL(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckFileTypeE :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckFileTypeE(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckPipe1 :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckPipe1(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckFileNameReq :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckFileNameReq(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckFileName :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckFileName(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckFileSizeReq :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckFileSizeReq(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckFileSize :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckFileSize(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckFileHash :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckFileHash(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckSlashLast :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckSlashLast(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_CheckEOS :
-    public mainMap_Default
-{
-public:
-    mainMap_CheckEOS(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_Ok :
-    public mainMap_Default
-{
-public:
-    mainMap_Ok(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class mainMap_Error :
-    public mainMap_Default
-{
-public:
-    mainMap_Error(const char * const name, const int stateId)
-    : mainMap_Default(name, stateId)
-    {};
-
-    virtual void EOS(CheckStrContext& context);
-    virtual void colon(CheckStrContext& context);
-    virtual void digit(CheckStrContext& context, char c);
-    virtual void digit_2(CheckStrContext& context);
-    virtual void letter_a_c(CheckStrContext& context, char c);
-    virtual void letter_d(CheckStrContext& context);
-    virtual void letter_e(CheckStrContext& context);
-    virtual void letter_f(CheckStrContext& context);
-    virtual void letter_g_z(CheckStrContext& context, char c);
-    virtual void letter_i(CheckStrContext& context);
-    virtual void letter_k(CheckStrContext& context);
-    virtual void letter_l(CheckStrContext& context);
-    virtual void pipe(CheckStrContext& context);
-    virtual void slash(CheckStrContext& context);
-    virtual void special(CheckStrContext& context);
-};
-
-class CheckStrContext :
-    public statemap::FSMContext
-{
-public:
-
-    explicit CheckStrContext(CheckStr& owner)
-    : FSMContext(mainMap::Start),
-      _owner(owner)
-    {};
-
-    CheckStrContext(CheckStr& owner, const statemap::State& state)
-    : FSMContext(state),
-      _owner(owner)
-    {};
-
-    virtual void enterStartState()
+    class CheckStrState :
+        public statemap::State
     {
-        getState().Entry(*this);
-        return;
-    }
+    public:
 
-    inline CheckStr& getOwner()
-    {
-        return (_owner);
+        CheckStrState(const char * const name, const int stateId)
+        : statemap::State(name, stateId)
+        {};
+
+        virtual void Entry(CheckStrContext&) {};
+        virtual void Exit(CheckStrContext&) {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+        virtual void unknown(CheckStrContext& context);
+
+    protected:
+
+        virtual void Default(CheckStrContext& context);
     };
 
-    inline CheckStrState& getState()
+    class mainMap
     {
-        if (_state == NULL)
+    public:
+
+        static mainMap_Start Start;
+        static mainMap_CheckProtocolD CheckProtocolD;
+        static mainMap_CheckProtocol2 CheckProtocol2;
+        static mainMap_CheckProtocolK CheckProtocolK;
+        static mainMap_CheckProtocolColon CheckProtocolColon;
+        static mainMap_CheckProtocolSlash1 CheckProtocolSlash1;
+        static mainMap_CheckProtocolSlash2 CheckProtocolSlash2;
+        static mainMap_CheckPipe0 CheckPipe0;
+        static mainMap_CheckFileTypeF CheckFileTypeF;
+        static mainMap_CheckFileTypeI CheckFileTypeI;
+        static mainMap_CheckFileTypeL CheckFileTypeL;
+        static mainMap_CheckFileTypeE CheckFileTypeE;
+        static mainMap_CheckPipe1 CheckPipe1;
+        static mainMap_CheckFileNameReq CheckFileNameReq;
+        static mainMap_CheckFileName CheckFileName;
+        static mainMap_CheckFileSizeReq CheckFileSizeReq;
+        static mainMap_CheckFileSize CheckFileSize;
+        static mainMap_CheckFileHash CheckFileHash;
+        static mainMap_CheckSlashLast CheckSlashLast;
+        static mainMap_CheckEOS CheckEOS;
+        static mainMap_Ok Ok;
+        static mainMap_Error Error;
+    };
+
+    class mainMap_Default :
+        public CheckStrState
+    {
+    public:
+
+        mainMap_Default(const char * const name, const int stateId)
+        : CheckStrState(name, stateId)
+        {};
+
+        virtual void unknown(CheckStrContext& context);
+    };
+
+    class mainMap_Start :
+        public mainMap_Default
+    {
+    public:
+        mainMap_Start(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckProtocolD :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckProtocolD(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckProtocol2 :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckProtocol2(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckProtocolK :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckProtocolK(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckProtocolColon :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckProtocolColon(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckProtocolSlash1 :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckProtocolSlash1(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckProtocolSlash2 :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckProtocolSlash2(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckPipe0 :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckPipe0(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckFileTypeF :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckFileTypeF(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckFileTypeI :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckFileTypeI(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckFileTypeL :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckFileTypeL(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckFileTypeE :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckFileTypeE(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckPipe1 :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckPipe1(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckFileNameReq :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckFileNameReq(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckFileName :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckFileName(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckFileSizeReq :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckFileSizeReq(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckFileSize :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckFileSize(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckFileHash :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckFileHash(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckSlashLast :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckSlashLast(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_CheckEOS :
+        public mainMap_Default
+    {
+    public:
+        mainMap_CheckEOS(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_Ok :
+        public mainMap_Default
+    {
+    public:
+        mainMap_Ok(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class mainMap_Error :
+        public mainMap_Default
+    {
+    public:
+        mainMap_Error(const char * const name, const int stateId)
+        : mainMap_Default(name, stateId)
+        {};
+
+        virtual void EOS(CheckStrContext& context);
+        virtual void colon(CheckStrContext& context);
+        virtual void digit(CheckStrContext& context, char c);
+        virtual void digit_2(CheckStrContext& context);
+        virtual void letter_a_c(CheckStrContext& context, char c);
+        virtual void letter_d(CheckStrContext& context);
+        virtual void letter_e(CheckStrContext& context);
+        virtual void letter_f(CheckStrContext& context);
+        virtual void letter_g_z(CheckStrContext& context, char c);
+        virtual void letter_i(CheckStrContext& context);
+        virtual void letter_k(CheckStrContext& context);
+        virtual void letter_l(CheckStrContext& context);
+        virtual void pipe(CheckStrContext& context);
+        virtual void slash(CheckStrContext& context);
+        virtual void special(CheckStrContext& context);
+    };
+
+    class CheckStrContext :
+        public statemap::FSMContext
+    {
+    public:
+
+        explicit CheckStrContext(CheckStr& owner)
+        : FSMContext(mainMap::Start),
+          _owner(owner)
+        {};
+
+        CheckStrContext(CheckStr& owner, const statemap::State& state)
+        : FSMContext(state),
+          _owner(owner)
+        {};
+
+        virtual void enterStartState()
         {
-            throw statemap::StateUndefinedException();
+            getState().Entry(*this);
+            return;
         }
 
-        return dynamic_cast<CheckStrState&>(*_state);
-    };
+        inline CheckStr& getOwner()
+        {
+            return (_owner);
+        };
 
-    inline void EOS()
-    {
-        getState().EOS(*this);
-    };
+        inline CheckStrState& getState()
+        {
+            if (_state == NULL)
+            {
+                throw statemap::StateUndefinedException();
+            }
 
-    inline void colon()
-    {
-        getState().colon(*this);
-    };
+            return dynamic_cast<CheckStrState&>(*_state);
+        };
 
-    inline void digit(char c)
-    {
-        getState().digit(*this, c);
-    };
+        inline void EOS()
+        {
+            getState().EOS(*this);
+        };
 
-    inline void digit_2()
-    {
-        getState().digit_2(*this);
-    };
+        inline void colon()
+        {
+            getState().colon(*this);
+        };
 
-    inline void letter_a_c(char c)
-    {
-        getState().letter_a_c(*this, c);
-    };
+        inline void digit(char c)
+        {
+            getState().digit(*this, c);
+        };
 
-    inline void letter_d()
-    {
-        getState().letter_d(*this);
-    };
+        inline void digit_2()
+        {
+            getState().digit_2(*this);
+        };
 
-    inline void letter_e()
-    {
-        getState().letter_e(*this);
-    };
+        inline void letter_a_c(char c)
+        {
+            getState().letter_a_c(*this, c);
+        };
 
-    inline void letter_f()
-    {
-        getState().letter_f(*this);
-    };
+        inline void letter_d()
+        {
+            getState().letter_d(*this);
+        };
 
-    inline void letter_g_z(char c)
-    {
-        getState().letter_g_z(*this, c);
-    };
+        inline void letter_e()
+        {
+            getState().letter_e(*this);
+        };
 
-    inline void letter_i()
-    {
-        getState().letter_i(*this);
-    };
+        inline void letter_f()
+        {
+            getState().letter_f(*this);
+        };
 
-    inline void letter_k()
-    {
-        getState().letter_k(*this);
-    };
+        inline void letter_g_z(char c)
+        {
+            getState().letter_g_z(*this, c);
+        };
 
-    inline void letter_l()
-    {
-        getState().letter_l(*this);
-    };
+        inline void letter_i()
+        {
+            getState().letter_i(*this);
+        };
 
-    inline void pipe()
-    {
-        getState().pipe(*this);
-    };
+        inline void letter_k()
+        {
+            getState().letter_k(*this);
+        };
 
-    inline void slash()
-    {
-        getState().slash(*this);
-    };
+        inline void letter_l()
+        {
+            getState().letter_l(*this);
+        };
 
-    inline void special()
-    {
-        getState().special(*this);
-    };
+        inline void pipe()
+        {
+            getState().pipe(*this);
+        };
 
-    inline void unknown()
-    {
-        getState().unknown(*this);
-    };
+        inline void slash()
+        {
+            getState().slash(*this);
+        };
 
-private:
-    CheckStr& _owner;
-};
+        inline void special()
+        {
+            getState().special(*this);
+        };
+
+        inline void unknown()
+        {
+            getState().unknown(*this);
+        };
+
+    private:
+        CheckStr& _owner;
+    };
+}
 
 
 #endif // CHECKSTR_SM_H

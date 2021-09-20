@@ -9,31 +9,37 @@
 #include <fstream>
 #include <iostream>
 #include <list>
+#include <map>
 
 #include "CheckStr.h"
 #include "Hash.h"
 
-class Dialogue {
-private:
-    void runFast();
+namespace lab1 {
 
-    std::list<std::string> runFromSource();
+    class Dialogue {
+    private:
+        char **strings;
+        int strNum;
+        bool isFast; // if true - the input is from cmd arguments and output is to cmd
+        std::ofstream out;
+        std::ifstream in;
+        std::map<Hash, int> table;
 
-    char **strings;
-    int strNum;
-    bool isFast; // if true - the input is from cmd arguments and output is to cmd
-    std::ofstream out;
-    std::ifstream in;
+        void runFast();
 
-    static std::string formResult(const std::string &str, const CheckStr &checker);
+        std::list<std::string> runFromSource();
 
-public:
-    Dialogue(int argc, char *argv[]);
+        std::string formResult(const std::string &str, const CheckStr &checker);
 
-    void run();
+        void incStat(const Hash &hash);
 
-    ~Dialogue();
-};
+    public:
+        Dialogue(int argc, char *argv[]);
 
+        void run();
+
+        ~Dialogue();
+    };
+}
 
 #endif //LAB1_DIALOGUE_H

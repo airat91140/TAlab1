@@ -1,6 +1,7 @@
 %start mainMap::Start
 %class CheckStr
 %header checkstr.h
+%package lab1
 
 %map mainMap
 %%

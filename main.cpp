@@ -8,7 +8,7 @@
 int main(int argc, char *argv[]) {
     try
     {
-        Dialogue dialogue(argc, argv);
+        lab1::Dialogue dialogue(argc, argv);
         dialogue.run();
     }
     catch (const std::exception &ex)
