@@ -29,9 +29,9 @@ namespace lab1 {
         Hash hash; // field where hash is stored
         bool isAccepted;
 
-        static std::string genAcceptedStr();
+        static std::string genAcceptedStr(int len);
 
-        static std::string genInacceptedStr();
+        static std::string genInacceptedStr(int len);
 
     public:
         [[nodiscard]] bool getIsAccepted() const;

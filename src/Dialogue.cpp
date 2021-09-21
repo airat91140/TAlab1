@@ -59,6 +59,10 @@ namespace lab1 {
             for (const auto &it: result) {
                 (out.is_open() ? out : std::cout) << it << std::endl;
             }
+            (out.is_open() ? out : std::cout) << std::endl;
+            for (const auto &it: table) {
+                (out.is_open() ? out : std::cout) << it.first.getHash() << ": " << it.second << std::endl;
+            }
         }
     }
 
@@ -83,8 +87,9 @@ namespace lab1 {
         while (std::getline(in.is_open() ? in : std::cin, line)) {
             CheckStr checker;
             checker.check(line);
+            if (checker.getIsAccepted())
+                incStat(checker.getHash());
             result.push_back(formResult(line, checker));
-            incStat(checker.getHash());
         }
         return result;
     }
@@ -98,9 +103,7 @@ namespace lab1 {
 
     std::string Dialogue::formResult(const std::string &str, const CheckStr &checker) {
         bool result = checker.getIsAccepted();
-        return str + "  ~  " +
-              (result ? "correct " : "incorrect") +
-              (result ? checker.getHash().getHash() + " " + std::to_string(table[checker.getHash()]) : "");
+        return str + "  ~  " + (result ? "correct " : "incorrect");
     }
 
     void Dialogue::incStat(const Hash &hash) {
@@ -108,7 +111,7 @@ namespace lab1 {
             ++table.at(hash);
         }
         catch (std::exception &ex) {
-            table.insert({hash, 0});
+            table.insert({hash, 1});
         }
     }
 }

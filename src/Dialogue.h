@@ -29,7 +29,7 @@ namespace lab1 {
 
         std::list<std::string> runFromSource();
 
-        std::string formResult(const std::string &str, const CheckStr &checker);
+        static std::string formResult(const std::string &str, const CheckStr &checker);
 
         void incStat(const Hash &hash);
 
