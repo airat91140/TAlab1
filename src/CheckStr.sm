@@ -40,7 +40,6 @@ Start
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -59,7 +58,6 @@ CheckProtocolD
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -78,7 +76,6 @@ CheckProtocol2
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -97,7 +94,6 @@ CheckProtocolK
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -116,7 +112,6 @@ CheckProtocolColon
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -135,7 +130,6 @@ CheckProtocolSlash1
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -154,7 +148,6 @@ CheckProtocolSlash2
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -173,7 +166,6 @@ CheckPipe0
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              CheckFileTypeF                  {}
 }
 
@@ -192,7 +184,6 @@ CheckFileTypeF
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -211,7 +202,6 @@ CheckFileTypeI
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -230,7 +220,6 @@ CheckFileTypeL
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -249,7 +238,6 @@ CheckFileTypeE
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -268,7 +256,6 @@ CheckPipe1
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              CheckFileNameReq                {}
 }
 
@@ -288,7 +275,6 @@ CheckFileNameReq
     letter_a_c(c: char)                               CheckFileName                   {}
     letter_g_z(c: char)                               CheckFileName                   {}
     special                                           CheckFileName                   {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -307,7 +293,6 @@ CheckFileName
     letter_a_c(c: char)                               CheckFileName                   {}
     letter_g_z(c: char)                               CheckFileName                   {}
     special                                           CheckFileName                   {}
-    EOS                                               Error                           {}
     pipe                                              CheckFileSizeReq                {}
 }
 
@@ -326,7 +311,6 @@ CheckFileSizeReq
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
@@ -345,7 +329,6 @@ CheckFileSize
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              CheckFileHash                   {}
 }
 
@@ -370,7 +353,6 @@ letter_a_c(c: char) [ctxt.getHash().isUnderOrEqMax()] CheckFileHash             
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe [ctxt.getHash().isEqMax()]                   CheckSlashLast                  {}
     pipe                                              Error                           {}
 }
@@ -382,7 +364,7 @@ CheckSlashLast
     digit_2                                           Error                           {}
     letter_k                                          Error                           {}
     colon                                             Error                           {}
-    slash                                             CheckEOS                        {}
+    slash                                             Ok                              {accept();}
     letter_f                                          Error                           {}
     letter_i                                          Error                           {}
     letter_l                                          Error                           {}
@@ -390,26 +372,6 @@ CheckSlashLast
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
-    pipe                                              Error                           {}
-}
-
-CheckEOS
-{
-    letter_e                                          Error                           {}
-    letter_d                                          Error                           {}
-    digit_2                                           Error                           {}
-    letter_k                                          Error                           {}
-    colon                                             Error                           {}
-    slash                                             Error                           {}
-    letter_f                                          Error                           {}
-    letter_i                                          Error                           {}
-    letter_l                                          Error                           {}
-    digit(c: char)                                    Error                           {}
-    letter_a_c(c: char)                               Error                           {}
-    letter_g_z(c: char)                               Error                           {}
-    special                                           Error                           {}
-    EOS                                               Ok                              {accept();}
     pipe                                              Error                           {}
 }
 
@@ -428,7 +390,6 @@ Ok
     letter_a_c(c: char)                               Error                           {unaccept();}
     letter_g_z(c: char)                               Error                           {unaccept();}
     special                                           Error                           {unaccept();}
-    EOS                                               Error                           {unaccept();}
     pipe                                              Error                           {unaccept();}
 }
 
@@ -447,12 +408,12 @@ Error
     letter_a_c(c: char)                               Error                           {}
     letter_g_z(c: char)                               Error                           {}
     special                                           Error                           {}
-    EOS                                               Error                           {}
     pipe                                              Error                           {}
 }
 
 Default
 {
+    EOS                                               Start                           {reset();}
     unknown                                           Error                           {unaccept();}
 }
 %%

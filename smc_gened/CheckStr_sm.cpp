@@ -32,9 +32,8 @@ namespace lab1
     mainMap_CheckFileSize mainMap::CheckFileSize("mainMap::CheckFileSize", 16);
     mainMap_CheckFileHash mainMap::CheckFileHash("mainMap::CheckFileHash", 17);
     mainMap_CheckSlashLast mainMap::CheckSlashLast("mainMap::CheckSlashLast", 18);
-    mainMap_CheckEOS mainMap::CheckEOS("mainMap::CheckEOS", 19);
-    mainMap_Ok mainMap::Ok("mainMap::Ok", 20);
-    mainMap_Error mainMap::Error("mainMap::Error", 21);
+    mainMap_Ok mainMap::Ok("mainMap::Ok", 19);
+    mainMap_Error mainMap::Error("mainMap::Error", 20);
 
     void CheckStrState::EOS(CheckStrContext& context)
     {
@@ -125,6 +124,26 @@ namespace lab1
 
     }
 
+    void mainMap_Default::EOS(CheckStrContext& context)
+    {
+        CheckStr& ctxt = context.getOwner();
+
+        context.getState().Exit(context);
+        context.clearState();
+        try
+        {
+            ctxt.reset();
+            context.setState(mainMap::Start);
+        }
+        catch (...)
+        {
+            context.setState(mainMap::Start);
+            throw;
+        }
+        context.getState().Entry(context);
+
+    }
+
     void mainMap_Default::unknown(CheckStrContext& context)
     {
         CheckStr& ctxt = context.getOwner();
@@ -141,15 +160,6 @@ namespace lab1
             context.setState(mainMap::Error);
             throw;
         }
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_Start::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
         context.getState().Entry(context);
 
     }
@@ -272,15 +282,6 @@ namespace lab1
     }
 
     void mainMap_Start::special(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckProtocolD::EOS(CheckStrContext& context)
     {
 
         context.getState().Exit(context);
@@ -415,15 +416,6 @@ namespace lab1
 
     }
 
-    void mainMap_CheckProtocol2::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
     void mainMap_CheckProtocol2::colon(CheckStrContext& context)
     {
 
@@ -542,15 +534,6 @@ namespace lab1
     }
 
     void mainMap_CheckProtocol2::special(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckProtocolK::EOS(CheckStrContext& context)
     {
 
         context.getState().Exit(context);
@@ -685,15 +668,6 @@ namespace lab1
 
     }
 
-    void mainMap_CheckProtocolColon::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
     void mainMap_CheckProtocolColon::colon(CheckStrContext& context)
     {
 
@@ -812,15 +786,6 @@ namespace lab1
     }
 
     void mainMap_CheckProtocolColon::special(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckProtocolSlash1::EOS(CheckStrContext& context)
     {
 
         context.getState().Exit(context);
@@ -955,15 +920,6 @@ namespace lab1
 
     }
 
-    void mainMap_CheckProtocolSlash2::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
     void mainMap_CheckProtocolSlash2::colon(CheckStrContext& context)
     {
 
@@ -1082,15 +1038,6 @@ namespace lab1
     }
 
     void mainMap_CheckProtocolSlash2::special(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckPipe0::EOS(CheckStrContext& context)
     {
 
         context.getState().Exit(context);
@@ -1225,15 +1172,6 @@ namespace lab1
 
     }
 
-    void mainMap_CheckFileTypeF::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
     void mainMap_CheckFileTypeF::colon(CheckStrContext& context)
     {
 
@@ -1352,15 +1290,6 @@ namespace lab1
     }
 
     void mainMap_CheckFileTypeF::special(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckFileTypeI::EOS(CheckStrContext& context)
     {
 
         context.getState().Exit(context);
@@ -1495,15 +1424,6 @@ namespace lab1
 
     }
 
-    void mainMap_CheckFileTypeL::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
     void mainMap_CheckFileTypeL::colon(CheckStrContext& context)
     {
 
@@ -1622,15 +1542,6 @@ namespace lab1
     }
 
     void mainMap_CheckFileTypeL::special(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckFileTypeE::EOS(CheckStrContext& context)
     {
 
         context.getState().Exit(context);
@@ -1765,15 +1676,6 @@ namespace lab1
 
     }
 
-    void mainMap_CheckPipe1::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
     void mainMap_CheckPipe1::colon(CheckStrContext& context)
     {
 
@@ -1892,15 +1794,6 @@ namespace lab1
     }
 
     void mainMap_CheckPipe1::special(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckFileNameReq::EOS(CheckStrContext& context)
     {
 
         context.getState().Exit(context);
@@ -2035,15 +1928,6 @@ namespace lab1
 
     }
 
-    void mainMap_CheckFileName::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
     void mainMap_CheckFileName::colon(CheckStrContext& context)
     {
 
@@ -2166,15 +2050,6 @@ namespace lab1
 
         context.getState().Exit(context);
         context.setState(mainMap::CheckFileName);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckFileSizeReq::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
         context.getState().Entry(context);
 
     }
@@ -2305,15 +2180,6 @@ namespace lab1
 
     }
 
-    void mainMap_CheckFileSize::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
     void mainMap_CheckFileSize::colon(CheckStrContext& context)
     {
 
@@ -2432,15 +2298,6 @@ namespace lab1
     }
 
     void mainMap_CheckFileSize::special(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckFileHash::EOS(CheckStrContext& context)
     {
 
         context.getState().Exit(context);
@@ -2706,15 +2563,6 @@ namespace lab1
 
     }
 
-    void mainMap_CheckSlashLast::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
     void mainMap_CheckSlashLast::colon(CheckStrContext& context)
     {
 
@@ -2825,24 +2673,6 @@ namespace lab1
 
     void mainMap_CheckSlashLast::slash(CheckStrContext& context)
     {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::CheckEOS);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckSlashLast::special(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::EOS(CheckStrContext& context)
-    {
         CheckStr& ctxt = context.getOwner();
 
         context.getState().Exit(context);
@@ -2861,148 +2691,11 @@ namespace lab1
 
     }
 
-    void mainMap_CheckEOS::colon(CheckStrContext& context)
+    void mainMap_CheckSlashLast::special(CheckStrContext& context)
     {
 
         context.getState().Exit(context);
         context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::digit(CheckStrContext& context, char c)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::digit_2(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::letter_a_c(CheckStrContext& context, char c)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::letter_d(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::letter_e(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::letter_f(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::letter_g_z(CheckStrContext& context, char c)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::letter_i(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::letter_k(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::letter_l(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::pipe(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::slash(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_CheckEOS::special(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_Ok::EOS(CheckStrContext& context)
-    {
-        CheckStr& ctxt = context.getOwner();
-
-        context.getState().Exit(context);
-        context.clearState();
-        try
-        {
-            ctxt.unaccept();
-            context.setState(mainMap::Error);
-        }
-        catch (...)
-        {
-            context.setState(mainMap::Error);
-            throw;
-        }
         context.getState().Entry(context);
 
     }
@@ -3283,15 +2976,6 @@ namespace lab1
             context.setState(mainMap::Error);
             throw;
         }
-        context.getState().Entry(context);
-
-    }
-
-    void mainMap_Error::EOS(CheckStrContext& context)
-    {
-
-        context.getState().Exit(context);
-        context.setState(mainMap::Error);
         context.getState().Entry(context);
 
     }

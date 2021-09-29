@@ -36,7 +36,6 @@ namespace lab1
     class mainMap_CheckFileSize;
     class mainMap_CheckFileHash;
     class mainMap_CheckSlashLast;
-    class mainMap_CheckEOS;
     class mainMap_Ok;
     class mainMap_Error;
     class mainMap_Default;
@@ -101,7 +100,6 @@ namespace lab1
         static mainMap_CheckFileSize CheckFileSize;
         static mainMap_CheckFileHash CheckFileHash;
         static mainMap_CheckSlashLast CheckSlashLast;
-        static mainMap_CheckEOS CheckEOS;
         static mainMap_Ok Ok;
         static mainMap_Error Error;
     };
@@ -115,6 +113,7 @@ namespace lab1
         : CheckStrState(name, stateId)
         {};
 
+        virtual void EOS(CheckStrContext& context);
         virtual void unknown(CheckStrContext& context);
     };
 
@@ -126,7 +125,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -151,7 +149,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -176,7 +173,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -201,7 +197,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -226,7 +221,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -251,7 +245,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -276,7 +269,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -301,7 +293,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -326,7 +317,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -351,7 +341,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -376,7 +365,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -401,7 +389,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -426,7 +413,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -451,7 +437,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -476,7 +461,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -501,7 +485,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -526,7 +509,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -551,7 +533,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -576,32 +557,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
-        virtual void colon(CheckStrContext& context);
-        virtual void digit(CheckStrContext& context, char c);
-        virtual void digit_2(CheckStrContext& context);
-        virtual void letter_a_c(CheckStrContext& context, char c);
-        virtual void letter_d(CheckStrContext& context);
-        virtual void letter_e(CheckStrContext& context);
-        virtual void letter_f(CheckStrContext& context);
-        virtual void letter_g_z(CheckStrContext& context, char c);
-        virtual void letter_i(CheckStrContext& context);
-        virtual void letter_k(CheckStrContext& context);
-        virtual void letter_l(CheckStrContext& context);
-        virtual void pipe(CheckStrContext& context);
-        virtual void slash(CheckStrContext& context);
-        virtual void special(CheckStrContext& context);
-    };
-
-    class mainMap_CheckEOS :
-        public mainMap_Default
-    {
-    public:
-        mainMap_CheckEOS(const char * const name, const int stateId)
-        : mainMap_Default(name, stateId)
-        {};
-
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -626,7 +581,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);
@@ -651,7 +605,6 @@ namespace lab1
         : mainMap_Default(name, stateId)
         {};
 
-        virtual void EOS(CheckStrContext& context);
         virtual void colon(CheckStrContext& context);
         virtual void digit(CheckStrContext& context, char c);
         virtual void digit_2(CheckStrContext& context);

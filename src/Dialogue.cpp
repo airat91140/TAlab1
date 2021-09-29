@@ -68,11 +68,12 @@ namespace lab1 {
 
     void Dialogue::runFast() {
         if (strcmp(strings[1], "-t") == 0) {
-            CheckStr::runTiming();
+            CheckStr Checker;
+            Checker.runTiming();
             return;
         }
+        CheckStr checker;
         for (int i = 1; i < strNum; ++i) {
-            CheckStr checker;
             checker.check(strings[i]);
             incStat(checker.getHash());
             std::cout << formResult(strings[i], checker) << std::endl;
@@ -84,8 +85,8 @@ namespace lab1 {
             std::cout << "Enter your strings below" << std::endl;
         std::string line;
         std::list<std::string> result;
+        CheckStr checker;
         while (std::getline(in.is_open() ? in : std::cin, line)) {
-            CheckStr checker;
             checker.check(line);
             if (checker.getIsAccepted())
                 incStat(checker.getHash());

@@ -50,7 +50,7 @@ namespace lab1 {
 
         void reset();
 
-        static void runTiming();
+        void runTiming();
     };
 }
 #endif //LAB1_CHECKSTR_H

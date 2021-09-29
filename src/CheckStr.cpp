@@ -200,9 +200,7 @@ namespace lab1 {
     }
 
     void CheckStr::reset() {
-        _fsm.enterStartState();
         hash.reset();
-        _fsm.emptyStateStack();
         isAccepted = false;
 
     }
@@ -215,17 +213,15 @@ namespace lab1 {
         for (int l = 1000000; l <= 10000000; l += 500000) {
             {
             duration = steady_clock::duration::zero();
-            CheckStr checker;
             str = genAcceptedStr(l);
             t = std::chrono::steady_clock::now();
-            checker.check(str);
+            this->check(str);
             duration += std::chrono::steady_clock::now() - t;
             }
             {
-            CheckStr checker;
             str = genInacceptedStr(l);
             t = std::chrono::steady_clock::now();
-            checker.check(str);
+            this->check(str);
             duration += std::chrono::steady_clock::now() - t;
             }
             std::cout/* << "symbols: " */<< 50 + l * 2 << " "/*" time: "*/ << duration.count() << std::endl;
