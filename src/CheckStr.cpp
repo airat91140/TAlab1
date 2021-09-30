@@ -210,7 +210,7 @@ namespace lab1 {
         steady_clock::duration duration = steady_clock::duration::zero();
         steady_clock::time_point t;
         srand(time(nullptr));
-        for (int l = 1000000; l <= 10000000; l += 500000) {
+        for (int l = 1000; l <= 10000; l += 500) {
             {
             duration = steady_clock::duration::zero();
             str = genAcceptedStr(l);

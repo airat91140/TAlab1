@@ -6,7 +6,7 @@
 //
 
 #include "checkstr.h"
-#include "D:/labs/Mephi/5 sem/ta/lab1/smc_gened\CheckStr_sm.h"
+#include "/mnt/d/labs/Mephi/5 sem/ta/lab1/smc_gened/CheckStr_sm.h"
 
 using namespace statemap;
 
