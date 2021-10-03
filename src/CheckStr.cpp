@@ -224,7 +224,7 @@ namespace lab1 {
             this->check(str);
             duration += std::chrono::steady_clock::now() - t;
             }
-            std::cout/* << "symbols: " */<< 50 + l * 2 << " "/*" time: "*/ << duration.count() << std::endl;
+            std::cout/* << "symbols: " */<< 100 + l * 2 << " "/*" time: "*/ << duration.count() << std::endl;
         }
     }
 
